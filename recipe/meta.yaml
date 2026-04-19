@@ -1,12 +1,13 @@
 {% set name = "mlconjug3" %}
 {% set version = "4.0.1" %}
+{% set python_min = "3.9" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mlconjug3-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/mlconjug3-{{ version }}.tar.gz
   sha256: e589f9db9e02ff61b586025937c8ec6ec8df6df49177bc20392287e03a78be13
 
 build:
@@ -18,22 +19,22 @@ build:
 
 requirements:
   host:
-    - python >=3.9
+    - python {{ python_min }}
     - pip
     - setuptools
     - wheel
 
   run:
-    - python >=3.9,<4.0
+    - python >= {{ python_min }},<4.0
 
-    # core dependencies
+    # core CLI / utils
     - click >=8.1,<9
     - defusedxml
     - joblib >=1.2,<2
     - numpy >=1.26,<2
 
-    # ML backend (IMPORTANT: tighter bound for conda-forge stability)
-    - scikit-learn >=1.3,<1.8
+    # ML backend
+    - scikit-learn >=1.3
 
     # utilities
     - rich >=13,<14
@@ -46,9 +47,10 @@ test:
 
   commands:
     - pip check
-    - python -c "import mlconjug3"
+    - mlconjug3 --help
 
   requires:
+    - python {{ python_min }}
     - pip
 
 about:
@@ -63,13 +65,24 @@ about:
     mlconjug3 can conjugate known and unseen verbs using pre-trained machine learning models.
 
     FEATURES:
-    - CLI tool
-    - Python API
-    - ML-based conjugation
-    - 6 language support
-    - extensible training pipeline
+    - Command Line Interface tool
+    - Easy API for Python integration
+    - Machine learning based verb conjugation
+    - Multi-language support (6 languages)
+    - Extensible model training pipeline
+    - High accuracy conjugation prediction
 
     Documentation: https://mlconjug3.readthedocs.io
+
+    Supported languages:
+    - French
+    - English
+    - Spanish
+    - Italian
+    - Portuguese
+    - Romanian
+
+    Free software: MIT license
 
   doc_url: https://mlconjug3.readthedocs.io/en/latest/
   dev_url: https://github.com/SekouDiaoNlp/mlconjug3
