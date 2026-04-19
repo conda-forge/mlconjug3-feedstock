@@ -13,80 +13,39 @@ Development: https://github.com/SekouDiaoNlp/mlconjug3
 
 Documentation: https://mlconjug3.readthedocs.io/en/latest/
 
-A Command Line application and Python library to conjugate verbs in French, English, Spanish, Italian, Portuguese and Romanian (more soon) using Machine Learning techniques.
+A Command Line application and Python library to conjugate verbs in French, English, Spanish, Italian, Portuguese and Romanian using Machine Learning techniques.
 
-Conjugate any verb in one of the supported languages, even completely new or made-up verbs, with the help of a pre-trained Machine Learning model.
-The pre-trained models are composed of a binary feature extractor, a feature selector using Linear Support Vector Classification, and a classifier using Stochastic Gradient Descent.
-Easily modify and retrain the models using any compatible classifiers from scikit-learn.
-Uses Verbiste as the training data for the French model, and unsupervised learning techniques to generate the data for the English, Spanish, Italian, Portuguese and Romanian models.
-
-
-Free software: MIT license
-
-Documentation: https://mlconjug3.readthedocs.io.
-
-SUPPORTED LANGUAGES:
-
--   French
--   English
--   Spanish
--   Italian
--   Portuguese
--   Romanian
+mlconjug3 can conjugate known and unseen verbs using pre-trained machine learning models.
 
 FEATURES:
+- Command Line Interface tool
+- Easy API for Python integration
+- Machine learning based verb conjugation
+- Multi-language support (6 languages)
+- Extensible model training pipeline
+- High accuracy conjugation prediction
 
--   Command Line Interface tool.
--   Easy to use and intuitive API.
--   Includes pre-trained models with 99% + accuracy in predicting conjugation class of unknown verbs.
--   Easily train new models or add new languages.
--   Uses caching and multiprocessing for maximum performance.
--   Easily integrate mlconjug3 in your own projects.
--   Extensive documentation.
--   Powerful machine learning algorithms for accurate verb conjugation predictions.
--   Support for multiple languages including English, Spanish, French, and German.
--   Customizable settings to fine-tune performance and adapt to different use cases.
--   Robust error handling and troubleshooting capabilities.
--   Regular updates and improvements to ensure optimal performance.
--   Community support and contributions to continuously expand the library’s capabilities.
--   Integration with popular libraries such as scikit-learn and numpy for machine learning tasks.
+Documentation: https://mlconjug3.readthedocs.io
 
+Supported languages:
+- French
+- English
+- Spanish
+- Italian
+- Portuguese
+- Romanian
 
-Usage
-=====
-
-> **note**
->
-> The default language is French.
-> :   When called without specifying a language, the library will try to
->     conjugate the verb in French.
->
-To use MLConjug3 from the command line:
-
-    $ mlconjug3 manger
-
-    $ mlconjug3 bring -l en
-
-    $ mlconjug3 gallofar --language es
-
-    $ mlconjug3 -o, --output (Path of the filename for storing the conjugation tables.)
-
-    $ mlconjug3 -s, --subject (The subject format type for the conjugated forms). The
-                       values can be 'abbrev' or 'pronoun'. The default value
-                       is 'abbrev'.
-
-    $ mlconjug3 -h Show the help menu
+Free software: MIT license
 
 
 Current build status
 ====================
 
 
-<table><tr><td>All platforms:</td>
+<table><tr>
+    <td>All platforms:</td>
     <td>
-      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12459&branchName=main">
-        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/mlconjug3-feedstock?branchName=main">
-      </a>
+      <img src="https://img.shields.io/badge/noarch-disabled-lightgrey.svg" alt="noarch disabled">
     </td>
   </tr>
 </table>
@@ -164,15 +123,15 @@ available continuous integration services. Thanks to the awesome service provide
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
 [Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
 it is possible to build and upload installable packages to the
-[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
-To manage the continuous integration and simplify feedstock maintenance
+To manage the continuous integration and simplify feedstock maintenance,
 [conda-smithy](https://github.com/conda-forge/conda-smithy) has been developed.
 Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
 this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
 
-For more information please check the [conda-forge documentation](https://conda-forge.org/docs/).
+For more information, please check the [conda-forge documentation](https://conda-forge.org/docs/).
 
 Terminology
 ===========
@@ -199,7 +158,7 @@ merged, the recipe will be re-built and uploaded automatically to the
 everybody to install and use from the `conda-forge` channel.
 Note that all branches in the conda-forge/mlconjug3-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
-on branches in forks and branches in the main repository should only be used to
+on branches in forks, and branches in the main repository should only be used to
 build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:

@@ -25,7 +25,7 @@ requirements:
     - wheel
 
   run:
-    - python >= {{ python_min }},<4.0
+    - python >={{ python_min }},<4.0
 
     # core CLI / utils
     - click >=8.1,<9
