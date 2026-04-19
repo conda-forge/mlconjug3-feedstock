@@ -23,9 +23,10 @@ requirements:
     - pip
     - setuptools
     - wheel
+    - poetry-core   # ✅ FIX: required for pyproject.toml (Poetry backend)
 
   run:
-    - python >={{ python_min }},<4.0
+    - python >= {{ python_min }},<4.0
 
     # core CLI / utils
     - click >=8.1,<9
@@ -90,3 +91,4 @@ about:
 extra:
   recipe-maintainers:
     - SekouDiaoNlp
+  
