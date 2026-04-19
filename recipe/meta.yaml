@@ -1,6 +1,5 @@
 {% set name = "mlconjug3" %}
-{% set version = "3.11.0" %}
-
+{% set version = "4.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mlconjug3-{{ version }}.tar.gz
-  sha256: 04a5f604b69a0f3026bc6e0460e85f90f4fcfffb9a00dc3e046898c5bfafd906
+  sha256: e589f9db9e02ff61b586025937c8ec6ec8df6df49177bc20392287e03a78be13
 
 build:
   number: 0
@@ -19,100 +18,59 @@ build:
 
 requirements:
   host:
+    - python >=3.9
     - pip
-    - pytest-runner
-    - python >=3.8
-    - poetry
+    - setuptools
+    - wheel
+
   run:
-    - click >=8.1.3
+    - python >=3.9,<4.0
+
+    # core dependencies
+    - click >=8.1,<9
     - defusedxml
-    - joblib
-    - numpy
-    - python >=3.8
-    - scikit-learn ==1.3.0
-    - rich <13.3
-    - pyyaml
-    - tomlkit
+    - joblib >=1.2,<2
+    - numpy >=1.26,<2
+
+    # ML backend (IMPORTANT: tighter bound for conda-forge stability)
+    - scikit-learn >=1.3,<1.8
+
+    # utilities
+    - rich >=13,<14
+    - pyyaml >=6,<7
+    - tomlkit >=0.11,<1
 
 test:
   imports:
     - mlconjug3
+
   commands:
     - pip check
-    - mlconjug3 --help
+    - python -c "import mlconjug3"
+
   requires:
     - pip
-    - poetry
 
 about:
   home: https://github.com/SekouDiaoNlp/mlconjug3
   summary: A Python library to conjugate French, English, Spanish, Italian, Portuguese and Romanian verbs using Machine Learning techniques.
   license: MIT
   license_file: LICENSE
+
   description: |
-    A Command Line application and Python library to conjugate verbs in French, English, Spanish, Italian, Portuguese and Romanian (more soon) using Machine Learning techniques.
+    A Command Line application and Python library to conjugate verbs in French, English, Spanish, Italian, Portuguese and Romanian using Machine Learning techniques.
 
-    Conjugate any verb in one of the supported languages, even completely new or made-up verbs, with the help of a pre-trained Machine Learning model.
-    The pre-trained models are composed of a binary feature extractor, a feature selector using Linear Support Vector Classification, and a classifier using Stochastic Gradient Descent.
-    Easily modify and retrain the models using any compatible classifiers from scikit-learn.
-    Uses Verbiste as the training data for the French model, and unsupervised learning techniques to generate the data for the English, Spanish, Italian, Portuguese and Romanian models.
-
-
-    Free software: MIT license
-
-    Documentation: https://mlconjug3.readthedocs.io.
-
-    SUPPORTED LANGUAGES:
-
-    -   French
-    -   English
-    -   Spanish
-    -   Italian
-    -   Portuguese
-    -   Romanian
+    mlconjug3 can conjugate known and unseen verbs using pre-trained machine learning models.
 
     FEATURES:
+    - CLI tool
+    - Python API
+    - ML-based conjugation
+    - 6 language support
+    - extensible training pipeline
 
-    -   Command Line Interface tool.
-    -   Easy to use and intuitive API.
-    -   Includes pre-trained models with 99% + accuracy in predicting conjugation class of unknown verbs.
-    -   Easily train new models or add new languages.
-    -   Uses caching and multiprocessing for maximum performance.
-    -   Easily integrate mlconjug3 in your own projects.
-    -   Extensive documentation.
-    -   Powerful machine learning algorithms for accurate verb conjugation predictions.
-    -   Support for multiple languages including English, Spanish, French, and German.
-    -   Customizable settings to fine-tune performance and adapt to different use cases.
-    -   Robust error handling and troubleshooting capabilities.
-    -   Regular updates and improvements to ensure optimal performance.
-    -   Community support and contributions to continuously expand the library’s capabilities.
-    -   Integration with popular libraries such as scikit-learn and numpy for machine learning tasks.
+    Documentation: https://mlconjug3.readthedocs.io
 
-
-    Usage
-    =====
-
-    > **note**
-    >
-    > The default language is French.
-    > :   When called without specifying a language, the library will try to
-    >     conjugate the verb in French.
-    >
-    To use MLConjug3 from the command line:
-
-        $ mlconjug3 manger
-
-        $ mlconjug3 bring -l en
-
-        $ mlconjug3 gallofar --language es
-
-        $ mlconjug3 -o, --output (Path of the filename for storing the conjugation tables.)
-
-        $ mlconjug3 -s, --subject (The subject format type for the conjugated forms). The
-                           values can be 'abbrev' or 'pronoun'. The default value
-                           is 'abbrev'.
-
-        $ mlconjug3 -h Show the help menu
   doc_url: https://mlconjug3.readthedocs.io/en/latest/
   dev_url: https://github.com/SekouDiaoNlp/mlconjug3
 
