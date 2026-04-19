@@ -1,5 +1,5 @@
 {% set name = "mlconjug3" %}
-{% set version = "3.11.0" %}
+{% set version = "4.0.1" %}
 
 
 package:
@@ -7,8 +7,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/mlconjug3-{{ version }}.tar.gz
-  sha256: 04a5f604b69a0f3026bc6e0460e85f90f4fcfffb9a00dc3e046898c5bfafd906
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/mlconjug3-{{ version }}.tar.gz
+  sha256: e589f9db9e02ff61b586025937c8ec6ec8df6df49177bc20392287e03a78be13
 
 build:
   number: 0
